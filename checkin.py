@@ -66,8 +66,8 @@ def main():
 	with open(configFile, "r", encoding='utf-8') as f:
 		info = json.load(f)
 		if info['last_RNA'] == 'default':
-			yesterday = datetime.datetime.now() - datetime.timedelta(days=1)
-			info['last_RNA'] = yesterday.strftime("%Y-%m-%d+%H")
+			today = datetime.datetime.now()
+			info['last_RNA'] = today.strftime("%Y-%m-%d+%H")
 			print('waining: 上次核酸时间未设置，默认为: ' + info['last_RNA'])
 	assert 'student_id' in info, "Expected infomation `User_Agent` not found. Check config.json"
 	assert 'password' in info, "Expected infomation `Cookie` not found. Check config.json"
